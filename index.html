@@ -1,0 +1,51 @@
+<!-- 
+
+Práctica P13a - Módulo 3 JS
+
+Realiza una función, que será invocada desde el ámbito global, para calcular los n primeros números primos. Recordamos que un número primo, únicamente es divisible por sí mismo y por la unidad.
+Esa “n” que indica la cantidad de números a calcular es el parámetro de la función.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+		// Pido al usuario que meta un número por pantalla.
+		var numero = parseInt(prompt("Introduzca un número: "));
+
+		// Llamo a la función listadoPrimos que saca el listado de los número primos hasta el límite introducido por el usuario.
+		listadoPrimos(numero);
+
+
+		function listadoPrimos (limite) {						// Función para sacar el listado de números primos, usando la función definida después "esPrimo".
+			var arrayPrimos = [];
+			for (var i = 2; i <= limite; i++) {
+				if (esPrimo(i)) {
+					arrayPrimos.push(i);
+				}
+			}
+			document.write("Los números primos hasta el número " + numero + " son: " + "<br>" + arrayPrimos);
+		}
+
+		function esPrimo(numero) {								// Función para saber si un número es primo o no.
+			var primo = true;
+			for (var i = 2; i < numero - 1; i++) {				// Para saber si es solamente divisible entre 1 y el mismo, por eso empezamos en (var i = 2) y llegamos hasta (numero - 1).
+																// Es decir, excluimos los dos casos en los que el número siempre es primo y miramos si en el resto de casos es divisible.
+				if (numero % i == 0) {							// Si el resto de la división entre el (número/i = 0), significa que no es primo, ya que tiene un posible divisor EXACTO. 
+					primo = false;
+					break;
+				}
+			}
+			return primo;										// Si ha llegado hasta aqwuí es porque nunca ha entrado en el if, por lo tanto primo = true (como lo habíamos inicializado).
+		}
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
